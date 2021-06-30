@@ -27,10 +27,11 @@ class Title(models.Model):
         null=True, blank=True,
         related_name='titles',
     )
-    genre = models.ManyToManyField(
+    genre = models.ForeignKey(
         Genre,
         null=True, blank=True,
         related_name='titles',
+        on_delete=models.SET_NULL
     )
     name = models.CharField(max_length=50)
     year = models.PositiveIntegerField()
