@@ -10,9 +10,6 @@ services:
   web:
     build: .
     restart: always
-    command: gunicorn api_yamdb.wsgi:application --bind 0.0.0.0:8000
-    ports:
-      - "8000:8000" 
     volumes:
       # Контейнер web будет работать с данными, хранящиеся в томе static_value, 
       # через свою директорию /code/static/
@@ -26,7 +23,6 @@ services:
     env_file:
       - ./.env
 
-  # Новый контейнер
   nginx:
     # образ, из которого должен быть запущен контейнер
     image: nginx:1.19.3
